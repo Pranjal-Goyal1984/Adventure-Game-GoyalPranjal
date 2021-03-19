@@ -19,11 +19,13 @@ hungerLevel = 0
 enemyDistance = 30
 fuelLevel = 10
 
-# what happens when the user chooses A.
+# what happens when the user chooses something
 
 while (user!="q"):
   distance = random.randint(20,40)
+  medium = random.randint(10,17)
   enemy = random.randint(5,10)
+  med_enemy = random.randint(1,6)
   if(user == "a" or user == "stop and eat and drink water"):
     thirstLevel = 0
     enemyDistance = enemyDistance - random.randint(1,5)
@@ -46,6 +48,18 @@ while (user!="q"):
     fuelLevel = fuelLevel - 5
     print("You traveled " + str(distance) + " miles. \nThirst and hunger increase \nFuel decreases \n" + str(options))
     user = input("\nYour choice: ").lower()
+  if(user == "e" or user == "moderate speed"):
+    distanceTraveled = distanceTraveled + medium
+    enemyDistance = enemyDistance - 1 + med_enemy
+    thirstLevel = thirstLevel + 2
+    hungerLevel = hungerLevel + 1
+    fuelLevel = fuelLevel - 3
+    print("You traveled " + str(medium)+ " miles. \n thirst and hunger increase \nFuel decreases \n" + str(options))
+    user = input("\nYour choice: ").lower()
+  if(thirstLevel >= 7):
+    print("You need to drink water. \n" + str(options))
+    
+
 
 
 if(user == "q"):
